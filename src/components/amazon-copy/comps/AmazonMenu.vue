@@ -134,7 +134,6 @@
 		router.push({name: "electronics-accessories"})
 	}
 	/////////////////////// accesories
-
 </script>		
 
 <style scoped>

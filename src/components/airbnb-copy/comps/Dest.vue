@@ -38,8 +38,9 @@ const checkOutDay = new Date(props.checkOut).getDate()
 
 const toDatails = (e) => {
     if (!e.target.classList.contains('notHere')) {
+        router.push({ name: "details", query: { id: props.id, cat: props.cat } })
         // router.push({"name": "details", params: { a:334 } })						
-        window.open(router.resolve({ name: "details", query: { id: props.id, cat: props.cat } }).href, '_blank')
+        // window.open(router.resolve({ name: "details", query: { id: props.id, cat: props.cat } }).href, '_blank')
     }
 }
 </script>
