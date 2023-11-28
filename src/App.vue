@@ -1,10 +1,14 @@
+<template><div>
+  <router-view></router-view>      
+</div></template>
+
 <script setup>
 </script>
 
-<template>
-  <div class="bg-gray-200 text-3xl">hi
-  </div>
-</template>
-
 <style scoped>
+@font-face {
+  font-family: pak;
+  src: url(/assets/ufonts/pak.ttf);
+}
+
 </style>
