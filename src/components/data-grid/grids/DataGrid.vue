@@ -131,7 +131,6 @@
     const gridKey = ref(0)
     const columnIcon = ref('/assets/grid/columns1.png')
     const globals = ref('')
-    const rightPageMarker = ref(false)
 
     const allData = async () => {
         // for data items count
@@ -185,51 +184,48 @@
         else{
             for(let i=1; i<pages.value+1; i++) dots.push(i)  
         }
-        if(rightPageMarker.value){
-            let mainCondition = pages.value - Math.floor(props.pageButtons/2)
-            let innerCondition = props.pageButtons - Math.floor(props.pageButtons/2)
-            if(props.pageButtons %2 == 0){                
-                if(currentPage.value <= mainCondition+1){                                        
-                    if(currentPage.value > innerCondition){
-                        dots = []
-                        for(
-                            let i = currentPage.value - innerCondition; 
-                            i < currentPage.value + innerCondition; 
-                            i++
-                        ) dots.push(i)                            
-                    }                
-                }
-                else{
+        let mainCondition = pages.value - Math.floor(props.pageButtons/2)
+        let innerCondition = props.pageButtons - Math.floor(props.pageButtons/2)
+        if(props.pageButtons %2 == 0){                
+            if(currentPage.value <= mainCondition+1){                                        
+                if(currentPage.value > innerCondition){
                     dots = []
                     for(
-                        let i = pages.value - props.pageButtons + 1; 
-                        i < pages.value+1; 
+                        let i = currentPage.value - innerCondition; 
+                        i < currentPage.value + innerCondition; 
                         i++
-                    ) dots.push(i)
-                }    
+                    ) dots.push(i)                            
+                }                
             }
             else{
-                if(currentPage.value <= mainCondition){
-                    if(currentPage.value >= innerCondition){
-                        dots = []
-                        for(
-                            let i = currentPage.value - innerCondition+1; 
-                            i < currentPage.value + innerCondition; 
-                            i++
-                        ) dots.push(i)
-                    }
-                }
-                else{
+                dots = []
+                for(
+                    let i = pages.value - props.pageButtons + 1; 
+                    i < pages.value+1; 
+                    i++
+                ) dots.push(i)
+            }    
+        }
+        else{
+            if(currentPage.value <= mainCondition){
+                if(currentPage.value >= innerCondition){
                     dots = []
                     for(
-                        let i = pages.value - props.pageButtons + 1; 
-                        i < pages.value+1; 
+                        let i = currentPage.value - innerCondition+1; 
+                        i < currentPage.value + innerCondition; 
                         i++
                     ) dots.push(i)
-                } 
-            }            
-        }
-        rightPageMarker.value = false
+                }
+            }
+            else{
+                dots = []
+                for(
+                    let i = pages.value - props.pageButtons + 1; 
+                    i < pages.value+1; 
+                    i++
+                ) dots.push(i)
+            } 
+        }            
         return dots
     })
 
@@ -289,7 +285,6 @@
 
     const paginateLeftClick = () => {            
         if(currentPage.value <= 1) return
-        rightPageMarker.value = true            
         spinShow.value = true
         headsMarker.value = false
         currentPage.value--
@@ -299,7 +294,6 @@
 
     const paginateRightClick = () => {            
         if(currentPage.value >= pages.value) return
-        rightPageMarker.value = true
         spinShow.value = true
         headsMarker.value = false
         currentPage.value++
@@ -440,7 +434,7 @@
         font-size: 12px;
         cursor: pointer;
         padding:5px;
-        border-radius:50%;
+        border-radius: 40%;
         width: 25px;
         height: 25px;
         background-color: #f2f2f2;
@@ -448,14 +442,14 @@
         display:flex;
         justify-content: center;
         align-items: center;
-        transition: all 0.3s linear;
+/*        transition: all 0.1s linear;*/
     }
     .pagingButton:hover{
-        background-color: #f91f1f;
+        background-color: #525660;
         color:white;
     }
     .paginatedButton{
-        background-color: #f91f1f;
+        background-color: #525660;
         color:white;   
     }
     .optionsDiv{
@@ -483,20 +477,7 @@
         width: 14px;
         height: 16px;
         cursor: pointer;
-    }
-    .colsOptionsClass{
-        position: absolute;
-        left: 1.9%;
-        bottom: -8px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        background-color: #f2f2f2;        
-        padding: 8px;
-        border-radius: 5px;
-        border-bottom: 1px solid #666666;
-        transform-origin: left;
-    }
+    }    
     .allHeadsClass{
         cursor: pointer;
         color: green;
@@ -568,7 +549,7 @@
     }
 
     .headingStyle{
-        background-color: #474b52;
+        background-color: #474b52; 
         text-shadow: 1px 1px 2px #595959;
         color: white;
         box-shadow: 3px 3px 6px white inset;

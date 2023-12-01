@@ -3,17 +3,17 @@
         <div><span class='text-lg md:text-2xl'>R</span>esponsive table developed in CSS and Vue JS</div>            
         <div class="w-full grid grid-cols-12 gap-x-2 pt-2 text-sm items-center">
             <div class="col-span-9 lg:col-span-8 xl:col-span-6 flex flex-col lg:flex-row gap-x-2 gap-y-1">
-                <div class="grid grid-cols-12 lg:flex gap-x-2 lg:gap-x-1">
+                <div class="grid grid-cols-12 lg:flex gap-x-2 lg:gap-x-1 focus-within:shadow-xl p-1 transition-all duration-500">
                     <div class="col-span-2 sm:col-span-2">Field </div>
-                    <input class='col-span-10 sm:col-span-8 ring-1 ring-gray-300 outline-none rounded-md pl-2' type="text" v-model='field'>
+                    <input class='col-span-10 sm:col-span-8 outline-none pl-2' type="text" v-model='field'>
                 </div>
-                <div class="grid grid-cols-12 lg:flex gap-x-2 lg:gap-x-1">
+                <div class="grid grid-cols-12 lg:flex gap-x-2 lg:gap-x-1 focus-within:shadow-xl p-1 transition-all duration-500">
                     <div class="col-span-2 sm:col-span-2">Color </div>
-                    <input class='col-span-10 sm:col-span-8 ring-1 ring-gray-300 outline-none rounded-md pl-2' type="text" v-model='colorToAdd'>
+                    <input class='col-span-10 sm:col-span-8 outline-none pl-2' type="text" v-model='colorToAdd'>
                 </div>
-                <div class="grid grid-cols-12 lg:flex gap-x-2 lg:gap-x-1">
+                <div class="grid grid-cols-12 lg:flex gap-x-2 lg:gap-x-1 focus-within:shadow-xl p-1 transition-all duration-500">
                     <div class="col-span-2 sm:col-span-2">%age </div>
-                    <input class='col-span-10 sm:col-span-8 ring-1 ring-gray-300 outline-none rounded-md pl-2' type="number" min=0 max=100 v-model='percentage'>
+                    <input class='col-span-10 sm:col-span-8 outline-none pl-2' type="number" min=0 max=100 v-model='percentage'>
                 </div>                
             </div>
             <div class="w-full col-span-3 lg:col-span-2 flex flex-col lg:flex-row gap-y-2 gap-x-2">
