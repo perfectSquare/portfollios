@@ -7,21 +7,21 @@
 					<label for='labelSet' class="col-span-4">label</label>
 					<input v-model='labelModel' type="text" name="labelSet" class="col-span-8 outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='setLabel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='setLabel'>Go!</button>
 			</div>
 			<div class="grid grid-cols-12 gap-x-4">
 				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
 					<label for='bgSet' class="col-span-4">background</label>
 					<input v-model='bgModel' type="text" name="bgSet" class="col-span-8 outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='setBG'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='setBG'>Go!</button>
 			</div>
 			<div class="grid grid-cols-12 gap-x-4">
 				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
 					<label for='colSet' class="col-span-4">Text Color</label>
 					<input v-model='colModel' type="text" name="colSet" class="col-span-8 outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='setCol'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='setCol'>Go!</button>
 			</div>
 
 			<div class="col-span-10 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1 p-1">

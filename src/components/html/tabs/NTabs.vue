@@ -1,27 +1,55 @@
-<template><div class='relative'>
-	<div 
-		class='flex'
-		:class="{'gap-x-2': !brothers, 'gap-x-0': brothers}"
+<template>
+<div 
+	class='relative flex items-center'
+	:class="{
+		'rounded px-8 bg-gray-800 overflow-hidden': putScrollToUse,
+		'w-[25%]': putScrollToUse && size == 'sm',
+		'w-[35%]': putScrollToUse && size == 'md',
+		'w-[40%]': putScrollToUse && size == 'lg',
+		'w-[50%]': putScrollToUse && size == 'xl',
+		'w-[55%]': putScrollToUse && size == '2xl',
+		'w-[60%]': putScrollToUse && size == '3xl'
+	}"
+>
+	<img 
+		v-if='putScrollToUse'
+		src="/assets/ecomm/forward2.png"
+		class='absolute cursor-pointer w-[8px] right-3 z-30'
+		@click='scrollToRight'
 	>
-	<template v-for='(tab,i) in tabs' :key='i'>
-		<div 		
-			class="relative tabsFont cursor-pointer opacity-90 hover:opacity-100 transition-all duration-300"
-			:class="`text-${txSize} pl-${padL} pr-${padR} pb-${padB} pt-${padT}`"
-			@click='tabClicked($event, tab)'
-		>
-			{{tab.label}}
-			<div 
-				class='h-[2px] w-full absolute left-0 bottom-0' 				
-				:class="{
-					'upIn':tab.selected && mode =='up', 'upOut':!tab.selected && mode =='up',
-					'opacityIn':tab.selected && mode =='opacity', 'opacityOut':!tab.selected && mode =='opacity',
-					'doorIn':tab.selected && mode =='door', 'doorOut':!tab.selected && mode =='door',
-					'straightIn':tab.selected && mode =='straight', 'straightOut':!tab.selected && mode =='straight',
-					'flowIn':tab.selected && mode =='flow', 'flowOut':!tab.selected && mode =='flow'
-				}"
-			></div>			
-	</div>		
-	</template>
+	<img 
+		v-if='putScrollToUse'
+		src="/assets/ecomm/reverse2.png"
+		class='absolute cursor-pointer w-[8px] left-3 z-10'
+		@click='scrollToLeft'
+	>
+	<div 
+		class='flex bg-red-200'
+		:class="{
+			'gap-x-2': !brothers, 
+			'gap-x-0': brothers,
+			'overflow-hidden': putScrollToUse
+		}"
+	>	
+		<template v-for='(tab,i) in tabs' :key='i'>
+			<div 		
+				class="relative tabsFont cursor-pointer opacity-90 hover:opacity-100 transition-all duration-300"
+				:class="`text-${txSize} pl-${padL} pr-${padR} pb-${padB} pt-${padT}`"
+				@click='tabClicked($event, tab)'
+			>
+				{{tab.label}}
+				<div 
+					class='h-[2px] w-full absolute left-0 bottom-0' 				
+					:class="{
+						'upIn':tab.selected && mode =='up', 'upOut':!tab.selected && mode =='up',
+						'opacityIn':tab.selected && mode =='opacity', 'opacityOut':!tab.selected && mode =='opacity',
+						'doorIn':tab.selected && mode =='door', 'doorOut':!tab.selected && mode =='door',
+						'straightIn':tab.selected && mode =='straight', 'straightOut':!tab.selected && mode =='straight',
+						'flowIn':tab.selected && mode =='flow', 'flowOut':!tab.selected && mode =='flow'
+					}"
+				></div>			
+			</div>		
+		</template>
 	</div>
 </div></template>
 
@@ -36,7 +64,8 @@
 		textColor: String,
 		borderColor: String,
 		size: String, // up | md | lg | xl | 2xl | 3xl
-		mode: String,		
+		mode: String,	
+		putScroll: Boolean	
 	})
 	const emits = defineEmits(['update:modelValue'])
 
@@ -49,6 +78,24 @@
 		props.tabs.forEach((t)=>{t.selected = false})
 		tab.selected = true
 		emits('update:modelValue', tab.label)
+	}
+
+	const putScrollToUse = computed(() => props.putScroll)
+
+	const scrollToRight = (e) => {
+		let elem = e.target.nextElementSibling.nextElementSibling
+		elem.scrollTo({
+			left: elem.scrollLeft + 200,
+			behavior: 'smooth'
+		})
+	}
+
+	const scrollToLeft = (e) => {
+		let elem = e.target.nextElementSibling
+		elem.scrollTo({
+			left: elem.scrollLeft - 200,
+			behavior: 'smooth'
+		})
 	}
 
 	const bgToUse = computed(()=>{

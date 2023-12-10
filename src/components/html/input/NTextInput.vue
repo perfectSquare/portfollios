@@ -2,7 +2,7 @@
 	<input 
 		type="text" 
 		name="" 
-		class='relative outline-none bgSet text-white'
+		class='relative outline-none bgSet text-white text-sm pl-1 pt-0.5 pb-0.5'
 		@focus='focused'
 		@blur='blured'
 		v-model='inValue'

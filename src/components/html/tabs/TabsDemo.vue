@@ -28,7 +28,7 @@
 					<label for='bgSet' class="col-span-4 textShade">background</label>
 					<input v-model='bgModel' type="text" name="bgSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='bgModelToGo = bgModel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='bgModelToGo = bgModel'>Go!</button>
 			</div>
 
 			<div class="grid grid-cols-12 gap-x-4">
@@ -36,7 +36,7 @@
 					<label for='colSet' class="col-span-4 textShade">Text Color</label>
 					<input v-model='colModel' type="text" name="colSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='colModelToGo = colModel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='colModelToGo = colModel'>Go!</button>
 			</div>
 
 			<div class="grid grid-cols-12 gap-x-4">
@@ -44,7 +44,7 @@
 					<label for='colSet' class="col-span-4 textShade">Border Color</label>
 					<input v-model='borderColorModel' type="text" name="colSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='borderColorToGo = borderColorModel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='borderColorToGo = borderColorModel'>Go!</button>
 			</div>		
 
 			<div class="grid grid-cols-12 focus-within:shadow-lg p-1">
@@ -68,13 +68,22 @@
 					<div class="flex items-center gap-x-[2px] text-xs"><span>straight</span><input type="radio" v-model='modeModel' @change='modeModelToGo = modeModel' name="modeSet" value="straight"></div>
 					<div class="flex items-center gap-x-[2px] text-xs"><span>flow</span><input type="radio" v-model='modeModel' @change='modeModelToGo = modeModel' name="modeSet" value="flow"></div>
 				</div>
-			</div>				
+			</div>
+
 			<div class="grid grid-cols-12 gap-x-4">
-				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
+				<div class="col-span-6 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
 					<label for='contentSet' class="col-span-4 textShade">Content</label>
 					<input v-model='contentModel' type="checkbox" name="contentSet" class="col-span-8 text-black">
+				</div>
+				
+				<div class="col-span-6 grid grid-cols-12 gap-x-4">
+					<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
+						<label for='contentSet' class="col-span-4 textShade">scroll</label>
+						<input v-model='putScroll' type="checkbox" name="contentSet" class="col-span-8 text-black">
+					</div>			
 				</div>			
 			</div>
+
 		</div>
 	</div>
 	
@@ -89,14 +98,17 @@
 			:textColor='colModelToGo'
 			:size='sizeModelToGo'
 			:mode='modeModelToGo'
+			:putScroll='putScroll'
 		/>
 		<div v-if='contentModel'>
 		<Transition mode='out-in'>
 			<div :class='contentClass' v-if='tabSelected == "html"' class=''>HTML is hypertext markup language</div>
 			<div :class='contentClass' v-else-if='tabSelected == "css"' class=''>CSS means cascading style sheet</div>
+			<div :class='contentClass' v-else-if='tabSelected == "tailwind"' class=''>TailwindCSS is css framework</div>
 			<div :class='contentClass' v-else-if='tabSelected == "javascript"' class=''>Javascript is web programming language</div>
-			<div :class='contentClass' v-else-if='tabSelected == "vue js"' class=''>Vue Js is javascript framework</div>
+			<div :class='contentClass' v-else-if='tabSelected == "vue"' class=''>Vue Js is javascript framework</div>
 			<div :class='contentClass' v-else-if='tabSelected == "cypress"' class=''>Cypress is used to test web applications</div>
+			<div :class='contentClass' v-else-if='tabSelected == "scroll"' class=''>Select scroll to avoid overflow</div>
 		</Transition>
 		</div>
 	</div>	
@@ -121,6 +133,7 @@
 	const modeModelToGo = ref('up')
 	const contentModel = ref(false)
 	const contentClass = ref('relative origin-top-left pt-1 pb-2 pl-2 pr-2 bg-white shadow-md')
+	const putScroll = ref(true)
 
 	const tabs = ref([
 		{
@@ -132,15 +145,23 @@
 			selected: false		
 		},
 		{
+			label: 'tailwind',
+			selected: false
+		},
+		{
 			label: 'javascript',
 			selected: false
 		},
 		{
-			label: 'vue js',
+			label: 'vue',
 			selected: false
 		},
 		{
 			label: 'cypress',
+			selected: false
+		},
+		{
+			label: 'scroll',
 			selected: false
 		}
 	])

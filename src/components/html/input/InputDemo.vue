@@ -11,10 +11,18 @@
 
 			<div class="grid grid-cols-12 gap-x-4">
 				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
+					<label for='modelSet' class="col-span-4 textShade">v-model</label>
+					<input v-model='name' type="text" name="modelSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
+				</div>			
+				<button class="btCloud text-xs col-span-3" @click='bgModelToGo = bgModel'>Go!</button>
+			</div>
+
+			<div class="grid grid-cols-12 gap-x-4">
+				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
 					<label for='bgSet' class="col-span-4 textShade">background</label>
 					<input v-model='bgModel' type="text" name="bgSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='bgModelToGo = bgModel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='bgModelToGo = bgModel'>Go!</button>
 			</div>
 
 			<div class="grid grid-cols-12 gap-x-4">
@@ -22,7 +30,7 @@
 					<label for='colSet' class="col-span-4 textShade">Text Color</label>
 					<input v-model='textColorModel' type="text" name="colSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='textColorToGo = textColorModel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='textColorToGo = textColorModel'>Go!</button>
 			</div>
 
 			<div class="grid grid-cols-12 gap-x-4">
@@ -30,7 +38,7 @@
 					<label for='colSet' class="col-span-4 textShade">Border Color</label>
 					<input v-model='borderColorModel' type="text" name="colSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud col-span-3" @click='borderColorToGo = borderColorModel'>Go!</button>
+				<button class="btCloud text-xs col-span-3" @click='borderColorToGo = borderColorModel'>Go!</button>
 			</div>				
 
 			
