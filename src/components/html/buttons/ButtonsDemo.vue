@@ -1,6 +1,12 @@
 <template><div class='mt-2 relative flex flex-col gap-y-2 items-center'>	
 	<div class="w-[96%] softBG flex flex-col gap-y-[8px] items-center p-4">
 
+		<div class="flex flex-col gap-y-2">
+			<div>
+				For a background color selected, hover and active flash color are automatically calculated, 
+				for example, for dark color active flash color will be light and vice verca
+			</div>
+		</div>
 		<div class="flex flex-col gap-y-[8px]">
 			<div class="grid grid-cols-12 gap-x-4">
 				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">

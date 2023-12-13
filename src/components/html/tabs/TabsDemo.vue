@@ -133,7 +133,7 @@
 	const modeModelToGo = ref('up')
 	const contentModel = ref(false)
 	const contentClass = ref('relative origin-top-left pt-1 pb-2 pl-2 pr-2 bg-white shadow-md')
-	const putScroll = ref(true)
+	const putScroll = ref(false)
 
 	const tabs = ref([
 		{

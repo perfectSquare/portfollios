@@ -2,15 +2,14 @@
 	<input 
 		type="text" 
 		name="" 
-		class='relative outline-none bgSet text-white pl-1 pt-0.5 pb-0.5 focus:placeholder-transparent'
+		class='relative outline-none bgSet text-white ring-2 ring-gray-400 focus:ring-gray-700 ring-offset-2 pl-1 pt-0.5 pb-0.5 focus:placeholder-transparent transition-all duration-300'
 		@focus='focused'
 		@blur='blured'
 		v-model='inValue'		
 		tabindex="-1"
 		:placeholder='placeHolder'
 	>
-	<div ref='placeHolderRef' class='absolute focus-out pl-1 textSet'>{{placeHolder}}</div>
-	<div class='h-[2px] w-full absolute left-0 bottom-0 straightIn'></div>	
+	<div ref='placeHolderRef' class='absolute focus-out pl-1 pr-1 textSet'>{{placeHolder}}</div>
 </div></template>
 
 <script setup>
@@ -50,8 +49,6 @@
 
 		e.target.nextElementSibling.classList.remove('focus-out', 'firstStyle')
 		e.target.nextElementSibling.classList.add('focus-in')
-		e.target.nextElementSibling.nextElementSibling.classList.remove('straightOut')
-		e.target.nextElementSibling.nextElementSibling.classList.add('straightIn')
 	}
 
 	const blured = (e) => {		
@@ -71,9 +68,6 @@
 		setTimeout(()=>{
 			e.target.setAttribute('placeholder', props.placeHolder)
 		}, 400)
-		
-		e.target.nextElementSibling.nextElementSibling.classList.add('straightOut')
-		e.target.nextElementSibling.nextElementSibling.classList.remove('straightIn')
 	}
 	watch(inValue, (n)=>{
 		if(n != ''){
@@ -88,43 +82,28 @@
 <style scoped>
 	.bgSet{
 		font-size: 12px;
-		background-color: v-bind(bgToUse);
+		background-color: white;
+/*		background-color: v-bind(bgToUse);*/
 /*		border-bottom: 2px solid v-bind(borderColorToUse);*/
 		color: v-bind(textColorToUse);
 	}
 	.textSet{
+		background-color: white;
 		color: v-bind(textColorToUse);
 	}
-	.straightIn{ 
-		background-color: v-bind(borderColorToUse);		
-		animation: straightInFrames 0.2s ease-out forwards;	
-	}	
 	::placeholder {
 	  color: v-bind(textColorToUse);
 	  opacity: 0.6;
 	}
-	@keyframes straightInFrames{
-		0%{ transform: scale(0,0);  }
-		100%{ transform: scale(1,1);}
-	}
-	.straightOut{
-		background-color: v-bind(borderColorToUse);
-		animation: straightOutFrames 0.2s ease-out forwards;
-	}
-	@keyframes straightOutFrames{
-		0%{ transform: scale(1,1);  }
-		100%{ transform: scale(0,0) ;  }		
-	}	
-	
-	.focus-in{ animation: foucus-in-frames 0.4s ease-out forwards; }
+	.focus-in{ animation: foucus-in-frames 0.3s ease-out forwards; }
 	@keyframes foucus-in-frames{
 		0%{ bottom: 3px; left: 0; opacity: 0.6;	font-size: 12px; display: none;}
-	  100%{	bottom: 20px; left: -2px; font-size: 14px; opacity: 1; display: inline; }
+	  100%{	bottom: 16px; left: -2px; font-size: 14px; opacity: 1; display: inline; }
 	}
 
-	.focus-out{	animation: foucus-out-frames 0.4s ease-out forwards; }
+	.focus-out{	animation: foucus-out-frames 0.3s ease-out forwards; }
 	@keyframes foucus-out-frames{		
-	  	0%{	bottom: 20px; left: -2px; font-size: 14px; opacity: 1; display: inline; }
+	  	0%{	bottom: 16px; left: -2px; font-size: 14px; opacity: 1; display: inline; }
 	  100%{ bottom: 3px; left: 0; opacity: 0.6;	font-size: 12px; display: none;}
 	}
 	.firstStyle{

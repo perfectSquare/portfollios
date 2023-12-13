@@ -6,7 +6,6 @@
 			and defineEmits(['update:modelValue']) <br>
 			custom v-model is implemented on divs for tabs, not on any input
 		</div> -->
-
 		<div class="flex flex-col gap-y-[8px]">		
 
 			<div class="grid grid-cols-12 gap-x-4">
@@ -45,9 +44,16 @@
 		</div>
 	</div>
 	
-	<div class="ring-2 ring-gray-100 items-center justify-center relative w-[96%] h-full pt-6 pb-6 rounded bg-white flex flex-col gap-y-2 mt-4">
+	<div class="ring-2 ring-gray-100 items-center justify-center relative w-[96%] h-full pt-6 pb-6 rounded bg-white flex gap-x-8 mt-4">
 		<div class="absolute bg-white shadow-md pl-2 pr-2 rounded -top-[12px] left-12">demo</div>
 		<NTextInput
+			v-model='name' 
+			placeHolder='name'
+			:bg='bgModelToGo'
+			:borderColor='borderColorToGo'
+			:textColor='textColorToGo'
+		/>		
+		<NTextInputOutline
 			v-model='name' 
 			placeHolder='name'
 			:bg='bgModelToGo'
@@ -59,6 +65,7 @@
 
 <script setup>
 	import NTextInput from '/src/components/html/input/NTextInput.vue'
+	import NTextInputOutline from '/src/components/html/input/NTextInputOutline.vue'
 	import {ref} from 'vue'
 
 	const name = ref('')

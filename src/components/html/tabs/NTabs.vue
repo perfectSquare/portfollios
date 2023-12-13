@@ -220,8 +220,6 @@
 	.straightIn{
 		background-color: v-bind(borderColorToUse);		animation: straightInFrames 0.4s ease-out forwards;	}
 	@keyframes straightInFrames{
-		/*0%{ width:0;  }
-		100%{ width:100%;}*/
 		0%{ transform: scale(0,0);  }
 		100%{ transform: scale(1,1);}
 	}

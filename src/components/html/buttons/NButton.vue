@@ -2,7 +2,7 @@
 	<button	
 		:class="`text-${txSize} pl-${padL} pr-${padR} pb-${padB}`"
 		class="
-			relative text-center 
+			relative text-center overflow-hidden
 			bgSet rounded 
 			transition-all duration-300			
 		"
@@ -10,7 +10,7 @@
 		@mouseup='toHideShownFlash'
 	>
 		{{label}}
-		<span :class='flash' class='absolute z-50 hidden h-full'></span>
+		<span :class='flash' class='absolute z-50 -full hidden h-full'></span>
 	</button>
 </template>
 
@@ -26,8 +26,15 @@
 
 	const toShowHiddenFlash = (e) =>{
 		e.target.children[0].classList.remove('hidden')
-		if(e.offsetX > 33) e.target.children[0].classList.add('right-0')
-		else e.target.children[0].classList.add('left-0')
+
+		if(e.offsetX > e.target.clientWidth/2){
+			e.target.children[0].classList.add('right-0')	
+			e.target.children[0].style.transformOrigin = 'left'
+		} 
+		else{
+			e.target.children[0].classList.add('left-0')
+			e.target.children[0].style.transformOrigin = 'right'
+		} 
 
 		setTimeout(()=>{
 			e.target.children[0].classList.add('hidden')
@@ -67,18 +74,18 @@
 		var g = (rgb >>  8) & 0xff;  // extract green
 		var b = (rgb >>  0) & 0xff;  // extract blue
 		var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-		console.log('luma', luma)
+		// console.log('luma', luma)
 		if(luma < 20){
-			hoverMode.value = 20
+			hoverMode.value = 60
 			flash.value = 'mdt'
 		} 
 		else if(luma >= 20 && luma < 200){
 			flash.value = 'mdt1'
-			hoverMode.value = -10	
+			hoverMode.value = -30	
 		} 
 		else{
 			flash.value = 'mdt2'
-			hoverMode.value = -20	
+			hoverMode.value = -50	
 		} 
 		return hex
 	})
@@ -135,7 +142,7 @@
 		background-color: v-bind(bgHoverToUse);
 	}
 	.mdt{
-		background-color: rgb(255, 255, 255, 0.8);
+		background-color: rgb(255, 255, 255, 0.4);
       	animation: mdtF 0.2s linear forwards;
 	}
 	.mdt1{
@@ -147,7 +154,11 @@
 		animation: mdtF 0.2s linear forwards;
 	}
 	@keyframes mdtF{
-		0%{ width: 0%; }
-		100%{ width: 100%; }
+		/*0%{ width: 0%; }
+		100%{ width: 100%; }*/
+		/*0%{ transform: scale(0.3,0.3); }
+		100%{ transform: scale(1.5,1.5); }*/
+		0%{ width: 0%; transform: scale(0,0); }
+		100%{ width: 100%; transform: scale(1.5,1.5); }
 	}
 </style>
