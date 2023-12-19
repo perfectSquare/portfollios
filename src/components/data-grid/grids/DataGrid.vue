@@ -31,7 +31,7 @@
                 >
                 <div style="position:absolute; bottom:1px; right:0px; cursor:pointer; opacity: 0; transition: all 0.5s linear;" @click='globalSearchCross'>&#10008;</div>
             </div>
-            <img class='logoClass' src="/assets/logo.png" title='logo'>
+            <img class='logoClass' src="/assets/dashboard/logo.png" title='logo'>
         </div>
         <!-- <div style="position:absolute; left:34px;">sort</div> -->
     </div>
