@@ -1,0 +1,105 @@
+<!-- <template><div class='relative'>
+	<input 
+		ref='inputRef'
+		type="text" 
+		name="inputChips"
+		class='outline-none py-1 ring-1 ring-gray-300 focus:ring-gray-700 transition-all duration-300 rounded'
+		v-model='chipToAdd'
+		@keypress.enter='addChip'
+	>	
+	<div ref='chipsDivRef' class="absolute top-2 left-1 flex gap-x-1 items-center">
+		<template v-for='(chip,i) in chips' :key='i'>
+			<div class="bg-gray-200 px-1 flex gap-x-1 items-center rounded chipAddAnimation">
+				<div class='text-[12px] text-center'>{{chip}}</div>
+				<div @click='chipOff($event, chip, i)' class='text-[9px] cursor-pointer hover:scale-110'>&#10008;</div>
+			</div>
+		</template>
+	</div>
+	<div>Chips Array: {{chips}}</div>
+	<div v-if='info'>Width of input and adding chip is stopped, this can be adjusted, its just demo</div>
+</div></template>
+
+<script setup>
+	import { ref, computed } from 'vue'
+
+	const inputRef = ref(null)
+	const chipsDivRef = ref(null)
+	const chips = ref([])
+	const chipToAdd = ref('')
+	const indentLength = ref(0)
+	const indentAddMarker = ref(true)
+	const info = ref(false)
+	const widthMarker = ref(false)
+
+	const addChip = (e) => {
+		widthMarker.value = true
+		if(chipToAdd.value == '') return
+		chips.value.push(chipToAdd.value)
+		if(chipToAdd.value.length == 1) indentLength.value += 30
+		else if(chipToAdd.value.length == 2) indentLength.value += 38
+		else if(chipToAdd.value.length == 3) indentLength.value += 42
+		else if(chipToAdd.value.length == 4) indentLength.value += 48
+	}
+
+	const chipOff = (e,ch,i) => {		
+		indentAddMarker.value = false
+		chips.value = chips.value.filter((ch,index) => index != i)
+		if(ch.length == 1) indentLength.value -= 30
+		else if(ch.length == 2) indentLength.value -= 38
+		else if(ch.length == 3) indentLength.value -= 42
+		else if(ch.length == 4) indentLength.value -= 48
+		widthMarker.value = false
+	}
+
+	const indentedCalculator = computed(()=>{
+		indentAddMarker.value = true
+		return indentLength.value + 'px'
+	})
+
+	const widthCalculator = computed(() => {
+		let texts = 0
+		let wid = 200
+		for(let elem of inputRef.value.nextElementSibling.children){
+			wid += elem.clientWidth			
+		}
+		console.log(wid)
+		if(wid > 300 && wid < 500){
+			if(widthMarker.value) wid = inputRef.value.clientWidth + 50 + 'px'
+			else wid = inputRef.value.clientWidth - 50 + 'px'
+		}
+		else if(wid >= 500){
+			wid = inputRef.value.clientWidth + 'px'
+		}
+		// else if(wid >= 500){
+		// 	info.value = true
+
+		// }
+		// no need, it is to run computed
+		chips.value.forEach((chip)=>{
+			texts += chip.length
+		})
+		// no need, it is to run computed
+		widthMarker.value = !widthMarker.value
+		return wid
+	})
+</script>
+
+<style scoped>
+	input{
+		text-indent: v-bind(indentedCalculator);
+		width: v-bind(widthCalculator);
+	}
+	.chipAddAnimation{
+		transform-origin: left;
+		animation: chipAddAnimationFrames 0.3s linear;
+	}
+	@keyframes chipAddAnimationFrames{
+		0%{ transform:scale(0,0); }
+		100%{ transform: scale(1,1); }
+	}
+</style>
+
+
+
+
+ -->

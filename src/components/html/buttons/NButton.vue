@@ -21,7 +21,7 @@
 		label: String,
 		bg: String,
 		textColor: String,
-		size: String // sm | md | lg | xl | 2xl
+		size: String // sm | md | lg | xl | 2xl | 3xl
 	})	
 
 	const toShowHiddenFlash = (e) =>{

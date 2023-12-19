@@ -94,7 +94,7 @@
     <ButtonsDemo v-if='buttonsShow' />    
     <InputDemo v-if='inputShow' />    
     <TabsDemo v-if='tabsShow' />    
-    <NInputChips v-if='inputChipsShow' />    
+    <InputChipsDemo v-if='inputChipsShow' />    
   </div>  
   <router-view></router-view>
 </div></template>
@@ -112,7 +112,7 @@
   import ButtonsDemo from '/src/components/html/buttons/ButtonsDemo.vue'
   import InputDemo from '/src/components/html/input/InputDemo.vue'
   import TabsDemo from '/src/components/html/tabs/TabsDemo.vue'
-  import NInputChips from '/src/components/html/input-chips/NInputChips.vue'
+  import InputChipsDemo from '/src/components/html/input-chips/InputChipsDemo.vue'
   // html
 
   const detailsOff = ref(true)
@@ -129,8 +129,8 @@
   const inputShow = ref(false)
   const inputChipsShow = ref(false)
 
-  const leftTextClicked = ref('b1 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-500')
-  const leftTextNotClicked = ref('cursor-pointer b2 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-500')  
+  const leftTextClicked = ref('b1 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-300')
+  const leftTextNotClicked = ref('cursor-pointer b2 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-300')  
   const leftIconParent = ref('cursor-pointer w-[28px] h-[28px] rounded-full hover:bg-[#44444b] hover:border-transparent border border-gray-200 flex items-center justify-center transition-all duration-300')
   // const leftIconImage = ref('w-[12px] h-[12px]')
 
@@ -146,7 +146,7 @@
       elements:[
         { title: 'button', clicked: false, image:'/assets/html/y.png' },
         { title: 'input', clicked: false, image:'/assets/html/in.png' },
-        // { title: 'input chips', clicked: false, image:'/assets/html/chips.png' },
+        { title: 'input chips', clicked: false, image:'/assets/html/chips.png' },
         { title: 'tabs', clicked: false, image:'/assets/html/tabs.png' },
         // { title: 'button1', clicked: false, image:'/assets/todo.png' },
         // { title: 'button1', clicked: false, image:'/assets/todo.png' },
@@ -242,13 +242,16 @@
   .naeemFT{ font-family:'Exo 2';  }
   .leftFT{ font-family:'Inconsolata' }  
 .b1{
-    background-color:#999999;
+    background-color:#4d4d4d;
+    box-shadow: 2px 2px 6px white inset; 
+    color:white;
+    text-shadow: 0 0 5px #e6ffff;    
+    /*background-color:#999999;
     color: black;
     text-shadow: 12px 12px 15px #e6ffff;    
     box-shadow: 22px 22px 22px white inset; 
-    border-bottom: 2px solid #d9d9d9;
-/*    padding: 1px 2px;*/    
-    height: 24px;
+    border-bottom: 2px solid #d9d9d9;*/
+    height: 26px;
 }
 
 .b2{
@@ -257,8 +260,7 @@
     text-shadow: 12px 12px 15px #e6ffff;    
     box-shadow: 22px 22px 22px white inset; 
     border-bottom: 2px solid #d9d9d9;
-/*    padding: 1px 2px;*/    
-    height: 24px;
+    height: 26px;
   }
 .b2:hover{  
     background-color:#4d4d4d;
