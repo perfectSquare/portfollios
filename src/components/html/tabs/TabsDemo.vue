@@ -28,23 +28,23 @@
 					<label for='bgSet' class="col-span-4 textShade">background</label>
 					<input v-model='bgModel' type="text" name="bgSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud text-xs col-span-3" @click='bgModelToGo = bgModel'>Go!</button>
+				<div class="col-span-3"><NButton label='Go!' size='md' bg='gray' textColor='white' @click='bgModelToGo = bgModel' /></div>
 			</div>
 
 			<div class="grid grid-cols-12 gap-x-4">
 				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
 					<label for='colSet' class="col-span-4 textShade">Text Color</label>
 					<input v-model='colModel' type="text" name="colSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
-				</div>			
-				<button class="btCloud text-xs col-span-3" @click='colModelToGo = colModel'>Go!</button>
+				</div>		
+				<div class="col-span-3"><NButton label='Go!' size='md' bg='gray' textColor='white' @click='colModelToGo = colModel' /></div>	
 			</div>
 
 			<div class="grid grid-cols-12 gap-x-4">
 				<div class="col-span-9 grid grid-cols-12 gap-x-1 focus-within:shadow-lg pl-1">
 					<label for='colSet' class="col-span-4 textShade">Border Color</label>
 					<input v-model='borderColorModel' type="text" name="colSet" class="col-span-8 text-black outline-none ring-1 ring-gray-100 rounded pl-2">
-				</div>			
-				<button class="btCloud text-xs col-span-3" @click='borderColorToGo = borderColorModel'>Go!</button>
+				</div>	
+				<div class="col-span-3"><NButton label='Go!' size='md' bg='gray' textColor='white' @click='borderColorToGo = borderColorModel' /></div>			
 			</div>		
 
 			<div class="grid grid-cols-12 focus-within:shadow-lg p-1">
@@ -116,6 +116,7 @@
 
 <script setup>
 	import NTabs from '/src/components/html/tabs/NTabs.vue'
+	import NButton from '/src/components/html/buttons/NButton.vue'
 	import {ref} from 'vue'
 
 	const tabSelected = ref('html')

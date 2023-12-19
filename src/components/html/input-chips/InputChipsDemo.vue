@@ -6,7 +6,7 @@
 					<label for='widthSet' class="col-span-4">width %</label>
 					<input v-model='widthModel' type="number" name="widthSet" class="col-span-8 outline-none ring-1 ring-gray-100 rounded pl-2">
 				</div>			
-				<button class="btCloud text-xs col-span-3" @click='widthModelToGo=widthModel'>Go!</button>
+				<div class="col-span-3"><NButton label='Go!' size='sm' bg='gray' textColor='white' @click='widthModelToGo=widthModel' /></div>	
 			</div>						
 		</div>
 	</div>
@@ -21,6 +21,7 @@
 
 <script setup>
 	import NInputChips from '/src/components/html/input-chips/NInputChips.vue'
+	import NButton from '/src/components/html/buttons/NButton.vue'
 	import { ref } from 'vue'
 
 	const widthModel = ref(40)

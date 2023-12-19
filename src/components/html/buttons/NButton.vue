@@ -1,8 +1,8 @@
 <template>
 	<button	
-		:class="`text-${txSize} pl-${padL} pr-${padR} pb-${padB}`"
+		:class="`text-${txSize} pl-${padL} pr-${padR} pb-${padB} pb-${padT}`"
 		class="
-			relative text-center overflow-hidden
+			relative inline text-center overflow-hidden
 			bgSet rounded 
 			transition-all duration-300			
 		"
@@ -123,6 +123,14 @@
 	})
 
 	const padB = computed(()=>{
+		if(props.size == 'sm') return 0.5
+		else if(props.size == 'md') return 0.5
+		else if(props.size == 'lg') return 0.5
+		else if(props.size == 'xl') return 1
+		else if(props.size == '2xl') return 2
+		else if(props.size == '3xl') return 2
+	})
+	const padT = computed(()=>{
 		if(props.size == 'sm') return 0.5
 		else if(props.size == 'md') return 0.5
 		else if(props.size == 'lg') return 0.5
