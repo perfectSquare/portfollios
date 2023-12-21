@@ -17,7 +17,7 @@
 					<option>html</option>
 					<option>css</option>
 					<option>javascript</option>
-					<option>vue js</option>
+					<option>vue</option>
 					<option>cypress</option>
 				</select>
 				</div>
