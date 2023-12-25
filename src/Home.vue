@@ -48,7 +48,8 @@
               @click='textClicked(ht.title, ht)'
               :title='ht.title'
             >
-            <img :src="ht.image" class="w-[26px] h-[12px]">
+            <img :src="ht.image" :class="`w${ht.w} h${ht.h}`">
+            <!-- <img :src="ht.image" class="w-[26px] h-[12px]"> -->
             </div>  
           </template>
           </div>
@@ -97,6 +98,7 @@
     <InputChipsDemo v-if='inputChipsShow' />    
     <DialogDemo v-if='dialogShow' />    
     <CheckBoxesDemo v-if='checkboxesShow' />    
+    <RadiosDemo v-if='radiosShow' />    
   </div>  
   <router-view></router-view>
 </div></template>
@@ -117,6 +119,7 @@
   import InputChipsDemo from '/src/components/html/input-chips/InputChipsDemo.vue'
   import DialogDemo from '/src/components/html/dialog/DialogDemo.vue'
   import CheckBoxesDemo from '/src/components/html/checkboxes/CheckBoxesDemo.vue'
+  import RadiosDemo from '/src/components/html/radios/RadiosDemo.vue'
   // html
 
   const detailsOff = ref(true)
@@ -134,6 +137,7 @@
   const inputChipsShow = ref(false)
   const dialogShow = ref(false)
   const checkboxesShow = ref(false)
+  const radiosShow = ref(false)
 
   const leftTextClicked = ref('b1 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-300')
   const leftTextNotClicked = ref('cursor-pointer b2 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-300')  
@@ -143,21 +147,22 @@
   const texts = ref([
     { title: 'charts', clicked: true, image:'/assets/charts1.png', hoverImage:'/assets/charts2.png', w:12, h:12 },
     { title: 'grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
+    { title: 'HTML', clicked: false, image:'/assets/h1.png', hoverImage:'/assets/h2.png', w:12, h:14,
+      elements:[
+        { title: 'button', clicked: false, image:'/assets/html/button.png', w:16, h:10 },
+        { title: 'checkbox', clicked: false, image:'/assets/html/check.png', w:12, h:14 },
+        { title: 'dialog', clicked: false, image:'/assets/html/tabs.png', w:12, h:14 },
+        { title: 'input', clicked: false, image:'/assets/html/in.png', w:16, h:10 },
+        { title: 'input chips', clicked: false, image:'/assets/html/chips.png', w:18, h:12 },
+        { title: 'radio', clicked: false, image:'/assets/html/chips.png', w:18, h:12 },
+        { title: 'tabs', clicked: false, image:'/assets/html/tabs.png', w:18, h:12 },
+      ] 
+    },
     { title: 'airbnb', clicked: false, image:'/assets/air1.png', hoverImage:'/assets/air2.png', w:12, h:13 },
     { title: 'amazon', clicked: false, image:'/assets/amazon1.png', hoverImage:'/assets/amazon2.png', w:12, h:12 },
     { title: 'urdu typer', clicked: false, image:'/assets/urdu1.png', hoverImage:'/assets/urdu2.png', w:13, h:13 },
-    { title: 'dashboard', clicked: false, image:'/assets/dash1.png', hoverImage:'/assets/dash2.png' , w:12, h:14 },
-    { title: 'e-commerce', clicked: false, image:'/assets/cart1.png', hoverImage:'/assets/cart2.png' , w:14, h:14 },
-    { title: 'HTML', clicked: false, image:'/assets/h1.png', hoverImage:'/assets/h2.png' , w:12, h:14,
-      elements:[
-        { title: 'button', clicked: false, image:'/assets/html/y.png' },
-        { title: 'checkbox', clicked: false, image:'/assets/html/tabs.png' },
-        { title: 'dialog', clicked: false, image:'/assets/html/tabs.png' },
-        { title: 'input', clicked: false, image:'/assets/html/in.png' },
-        { title: 'input chips', clicked: false, image:'/assets/html/chips.png' },
-        { title: 'tabs', clicked: false, image:'/assets/html/tabs.png' },
-      ] 
-    },
+    { title: 'dashboard', clicked: false, image:'/assets/dash1.png', hoverImage:'/assets/dash2.png', w:12, h:14 },
+    { title: 'e-commerce', clicked: false, image:'/assets/cart1.png', hoverImage:'/assets/cart2.png', w:14, h:14 },    
   ])
 
   const test1 = (e,i) => {
@@ -187,31 +192,31 @@
     tx.clicked = true
     if(t == 'charts'){
       chartsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'grid'){
       gridShow.value = true
-      chartsShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false          
+      chartsShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false          
     }
     else if(t == 'urdu typer'){
       urduShow.value = true
-      chartsShow.value = gridShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false    
+      chartsShow.value = gridShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false    
     }    
     else if(t == 'airbnb'){
       airShow.value = true
-      chartsShow.value = gridShow.value = urduShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false      
+      chartsShow.value = gridShow.value = urduShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false      
     }
     else if(t == 'amazon'){
       amazonShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false      
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false      
     }
     else if(t == 'dashboard'){
       dashShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false
     }
     else if(t == 'e-commerce'){
       ecommShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'HTML'){
       htmlShow.value = !htmlShow.value
@@ -219,32 +224,37 @@
     else if(t == 'button'){
       setForElement('button')
       buttonsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'tabs'){
       setForElement('tabs')
       tabsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'input'){
       setForElement('input')
       inputShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'input chips'){
       setForElement('input chips')
       inputChipsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'dialog'){
       setForElement('dialog')
       dialogShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = checkboxesShow.value = radiosShow.value = false  
     }
     else if(t == 'checkbox'){
       setForElement('checkbox')
       checkboxesShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = radiosShow.value = false  
+    }
+    else if(t == 'radio'){
+      setForElement('radio')
+      radiosShow.value = true
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
     }
 
   }
@@ -289,11 +299,22 @@
 .w12{ width: 12px; }
 .w13{ width: 13px; }
 .w14{ width: 14px; }
+.w15{ width: 15px; }
+.w16{ width: 16px; }
+.w17{ width: 17px; }
+.w18{ width: 18px; }
+.w19{ width: 19px; }
+.w20{ width: 20px; }
+
 .h10{ height: 10px; }
 .h11{ height: 11px; }
 .h12{ height: 12px; }
 .h13{ height: 13px; }
 .h14{ height: 14px; }
-.h15{ height: 14px; }
-.h16{ height: 14px; }
+.h15{ height: 15px; }
+.h16{ height: 16px; }
+.h17{ height: 17px; }
+.h18{ height: 18px; }
+.h19{ height: 19px; }
+.h20{ height: 20px; }
 </style>

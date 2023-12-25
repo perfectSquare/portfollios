@@ -56,7 +56,7 @@ import { ref } from 'vue'
     const dataColors = ref(["red", "green", "blue", "#659eb3", "#196666", "black", "yellow", "#22ffaa",'blue'])
     const rates = ref([100, 65, 12.5, 33, 44, 86.2, 17, 35.3,17])
     const yMin = ref(0)
-    const yMax = ref(100)
+    const yMax = ref(64)
     // data set
 
     // add
