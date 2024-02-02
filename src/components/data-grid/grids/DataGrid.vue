@@ -371,6 +371,7 @@
     })
 
     watch(() => props.rows, (n) => {
+        console.log(n)
         limit.value = n
         gridKey.value++
         headsMarker.value = false

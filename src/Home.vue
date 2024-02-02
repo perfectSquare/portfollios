@@ -149,8 +149,8 @@
 
   const texts = ref([
     { title: 'charts', clicked: true, image:'/assets/charts1.png', hoverImage:'/assets/charts2.png', w:12, h:12 },
-    //{ title: 'grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
-    { title: 'edit grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
+    { title: 'grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
+    // { title: 'edit grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
     { title: 'HTML', clicked: false, image:'/assets/h1.png', hoverImage:'/assets/h2.png', w:12, h:14,
       elements:[
         { title: 'button', clicked: false, image:'/assets/html/button.png', w:16, h:10 },
