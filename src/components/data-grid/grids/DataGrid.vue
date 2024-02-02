@@ -131,6 +131,7 @@
     const gridKey = ref(0)
     const columnIcon = ref('/assets/grid/columns1.png')
     const globals = ref('')
+    const rightLeftMarker = ref(false)
 
     const allData = async () => {
         // for data items count
@@ -178,12 +179,18 @@
 
     const finalPageButtons = computed(()=>{
         let dots = []
-        if(props.pageButtons && props.pageButtons < pages.value){
-            for(let i=1; i<props.pageButtons+1; i++) dots.push(i)
+        if(props.pageButtons < 20){
+            if(props.pageButtons && props.pageButtons < pages.value){
+                for(let i=1; i<props.pageButtons+1; i++) dots.push(i)
+            }
+            else{
+                for(let i=1; i<pages.value+1; i++) dots.push(i)  
+            }
         }
         else{
-            for(let i=1; i<pages.value+1; i++) dots.push(i)  
-        }
+            for(let i=1; i<20; i++) dots.push(i)  
+        }        
+        if(rightLeftMarker.value){
         let mainCondition = pages.value - Math.floor(props.pageButtons/2)
         let innerCondition = props.pageButtons - Math.floor(props.pageButtons/2)
         if(props.pageButtons %2 == 0){                
@@ -225,6 +232,7 @@
                     i++
                 ) dots.push(i)
             } 
+        }
         }            
         return dots
     })
@@ -285,6 +293,7 @@
 
     const paginateLeftClick = () => {            
         if(currentPage.value <= 1) return
+        rightLeftMarker.value = true
         spinShow.value = true
         headsMarker.value = false
         currentPage.value--
@@ -294,6 +303,7 @@
 
     const paginateRightClick = () => {            
         if(currentPage.value >= pages.value) return
+            rightLeftMarker.value = true
         spinShow.value = true
         headsMarker.value = false
         currentPage.value++

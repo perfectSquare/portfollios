@@ -1,8 +1,8 @@
 <template><div class='relative'>
 	<input 
-		type="text" 
+		:type="inputType" 
 		name="" 
-		class='relative outline-none bgSet text-white pl-1 pt-0.5 pb-0.5 focus:placeholder-transparent'
+		class='relative w-full outline-none bgSet text-white pl-1 pt-0.5 pb-0.5 focus:placeholder-transparent'
 		@focus='focused'
 		@blur='blured'
 		v-model='inValue'		
@@ -10,14 +10,15 @@
 		:placeholder='placeHolder'
 	>
 	<div ref='placeHolderRef' class='absolute focus-out pl-1 textSet'>{{placeHolder}}</div>
-	<div class='h-[2px] w-full absolute left-0 bottom-0 straightIn'></div>	
+	<div class='h-[1px] w-full absolute left-0 bottom-0 straightIn'></div>	
 </div></template>
 
 <script setup>
 	import { ref, computed, watch } from 'vue'	
 
 	const props = defineProps({
-		modelValue: String,
+		modelValue: [String, Number],
+		inputType: String,
 		placeHolder: String,
 		bg: String,
 		textColor: String,
@@ -45,6 +46,7 @@
 	})
 
 	const focused = (e) => {
+		console.log(22)
 		if(textColorToUse.value != 'black') e.target.nextElementSibling.style.color = 'black'
 		else e.target.nextElementSibling.style.color = textColorToUse.value
 

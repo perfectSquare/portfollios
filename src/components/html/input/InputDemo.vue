@@ -42,6 +42,7 @@
 		<div class="absolute bg-white shadow-md pl-2 pr-2 rounded -top-[12px] left-12">demo</div>
 		<NTextInput
 			v-model='name' 
+			inputType='text'
 			placeHolder='name'
 			:bg='bgModelToGo'
 			:borderColor='borderColorToGo'
@@ -49,6 +50,7 @@
 		/>		
 		<NTextInputOutline
 			v-model='name' 
+			inputType='text'
 			placeHolder='name'
 			:bg='bgModelToGo'
 			:borderColor='borderColorToGo'

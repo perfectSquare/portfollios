@@ -1,7 +1,9 @@
 <template><div class='relative flex gap-x-12'>	
 	<label ref='cssCheckboxRef' class='cssCheckbox relative inline-flex gap-x-[10px] hover:shadow pl-2 pr-2 items-center transition-all duration-200'>
-		<input type="checkbox" name="test" v-model='model'>		
-		<span class="absolute top-[5px] left-[8px] flex items-center bg-white w-[15px] h-[15px]">
+		<input class='hidden' type="checkbox" name="test" v-model='model'>		
+		<span 
+			class="flex items-center bg-white w-[15px] h-[15px]"
+		>
 			<svg
 			    viewBox="0 0 123.35514 108.92151"
 			    version="1.1"
@@ -31,7 +33,7 @@
    				</g>
 			</svg>
 		</span>
-		<span class='text-base'>{{labelToUse}}</span>
+		<span v-if='labelToUse != ""' class='text-base'>{{labelToUse}}</span>
 	</label>
 	
 </div></template>

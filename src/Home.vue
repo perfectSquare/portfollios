@@ -86,6 +86,7 @@
     </div>
     <ChartDemo v-if='chartsShow' />
     <DataGridDemo v-if='gridShow' />    
+    <EditGridDemo v-if='editGridShow' />    
     <UrduTyper v-if='urduShow' />    
     <Air v-if='airShow' />
     <Amazon v-if='amazonShow' />
@@ -106,6 +107,7 @@
 <script setup>
   import { ref } from 'vue'
   import DataGridDemo from '/src/components/data-grid/DataGridDemo.vue'
+  import EditGridDemo from '/src/components/edit-grid/EditGridDemo.vue'
   import ChartDemo from '/src/components/data-grid/charts/ChartDemo.vue'
   import UrduTyper from '/src/components/urdu_typing/UrduTyper.vue'
   import Air from '/src/components/airbnb-copy/Air.vue'
@@ -119,12 +121,13 @@
   import InputChipsDemo from '/src/components/html/input-chips/InputChipsDemo.vue'
   import DialogDemo from '/src/components/html/dialog/DialogDemo.vue'
   import CheckBoxesDemo from '/src/components/html/checkboxes/CheckBoxesDemo.vue'
-  import RadiosDemo from '/src/components/html/radios/RadiosDemo.vue'
+  import RadiosDemo from '/src/components/html/radios/RadiosDemo.vue'  
   // html
 
   const detailsOff = ref(true)
   const chartsShow = ref(true)
   const gridShow = ref(false)
+  const editGridShow = ref(false)
   const urduShow = ref(false)
   const airShow = ref(false)
   const amazonShow = ref(false)
@@ -137,7 +140,7 @@
   const inputChipsShow = ref(false)
   const dialogShow = ref(false)
   const checkboxesShow = ref(false)
-  const radiosShow = ref(false)
+  const radiosShow = ref(false)  
 
   const leftTextClicked = ref('b1 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-300')
   const leftTextNotClicked = ref('cursor-pointer b2 pr-1 pl-1 rounded-r-2xl ronded-b-2xl transition duration-300')  
@@ -146,7 +149,8 @@
 
   const texts = ref([
     { title: 'charts', clicked: true, image:'/assets/charts1.png', hoverImage:'/assets/charts2.png', w:12, h:12 },
-    { title: 'grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
+    //{ title: 'grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
+    { title: 'edit grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
     { title: 'HTML', clicked: false, image:'/assets/h1.png', hoverImage:'/assets/h2.png', w:12, h:14,
       elements:[
         { title: 'button', clicked: false, image:'/assets/html/button.png', w:16, h:10 },
@@ -192,31 +196,31 @@
     tx.clicked = true
     if(t == 'charts'){
       chartsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'grid'){
       gridShow.value = true
-      chartsShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false          
+      chartsShow.value = urduShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false          
     }
     else if(t == 'urdu typer'){
       urduShow.value = true
-      chartsShow.value = gridShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false    
+      chartsShow.value = gridShow.value = airShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false    
     }    
     else if(t == 'airbnb'){
       airShow.value = true
-      chartsShow.value = gridShow.value = urduShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false      
+      chartsShow.value = gridShow.value = urduShow.value = amazonShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false      
     }
     else if(t == 'amazon'){
       amazonShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false      
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = dashShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false      
     }
     else if(t == 'dashboard'){
       dashShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = ecommShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false
     }
     else if(t == 'e-commerce'){
       ecommShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = htmlShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'HTML'){
       htmlShow.value = !htmlShow.value
@@ -224,37 +228,42 @@
     else if(t == 'button'){
       setForElement('button')
       buttonsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'tabs'){
       setForElement('tabs')
       tabsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'input'){
       setForElement('input')
       inputShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'input chips'){
       setForElement('input chips')
       inputChipsShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'dialog'){
       setForElement('dialog')
       dialogShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = checkboxesShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = checkboxesShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'checkbox'){
       setForElement('checkbox')
       checkboxesShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = radiosShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = radiosShow.value = editGridShow.value = false  
     }
     else if(t == 'radio'){
       setForElement('radio')
       radiosShow.value = true
-      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = false  
+      gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = editGridShow.value = false  
+    }
+    else if(t == 'edit grid'){
+      setForElement('edit grid')
+      editGridShow.value = true
+      htmlShow.value = gridShow.value = urduShow.value = airShow.value = chartsShow.value = amazonShow.value = dashShow.value = ecommShow.value = buttonsShow.value = tabsShow.value = inputShow.value = inputChipsShow.value = dialogShow.value = checkboxesShow.value = radiosShow.value = false  
     }
 
   }
