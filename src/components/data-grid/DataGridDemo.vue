@@ -1,4 +1,3 @@
-
 <template><div class="relative flex flex-col gap-y-2 mt-2">
     <div class="pt-2 pb-2 pl-4 pr-4 softBG drop-shadow-md bg-white flex flex-col gap-y-1 items-center">
         <div class="text-xs">Enter api endpoint, JSON and AXIOS based with structure <span class='text-lg'>[{}, {}, {}, ...]</span> for example https://jsonplaceholder.typicode.com/todos</div>

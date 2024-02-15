@@ -81,8 +81,8 @@
 
   <div class='p-2 w-full flex flex-col gap-y-4'>
     <div class='naeemFT flex gap-x-4 p-2 shadow-md items-center'>
-      <div class="text-3xl">Naeem bin Adam</div>
-      <div>portfollio projects</div>      
+      <div class="text-xl sm:text-2xl md:text-3xl">Naeem bin Adam</div>
+      <div class="text-sm sm:text-base">portfollio projects</div>      
     </div>
     <ChartDemo v-if='chartsShow' />
     <DataGridDemo v-if='gridShow' />    
@@ -150,7 +150,7 @@
   const texts = ref([
     { title: 'charts', clicked: true, image:'/assets/charts1.png', hoverImage:'/assets/charts2.png', w:12, h:12 },
     { title: 'grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
-    // { title: 'edit grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
+    { title: 'edit grid', clicked: false, image:'/assets/grid1.png', hoverImage:'/assets/grid2.png', w:12, h:14 },
     { title: 'HTML', clicked: false, image:'/assets/h1.png', hoverImage:'/assets/h2.png', w:12, h:14,
       elements:[
         { title: 'button', clicked: false, image:'/assets/html/button.png', w:16, h:10 },

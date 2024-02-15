@@ -672,8 +672,8 @@
 	const letterAll = ref('relative border-t-2 border-r-2 border-b-2 border-gray-200 hover:border-gray-500 rounded text-xs pr-1 pb-1 cell')	
 	const letters = ref('hover:bg-gray-200 rounded p-1 sm:p-2 text-center text-base md:text-xl')
 	const letterSingle = ref('ring-2 ring-gray-100 hover:ring-gray-400 rounded p-1 sm:p-2 text-sm sm:text-lg')
-	const letterSP = ref('rounded p-1.5 sm:p-2 spFont bg-d2 text-white sm:w-6')
-	const numbers = ref('rounded p-1 sm:p-1.5 bg-d4 text-white text-center')
+	const letterSP = ref('rounded p-1.5 sm:p-2 spFont bg-gray-800 text-white sm:w-6')
+	const numbers = ref('rounded p-1 sm:p-1.5 bg-gray-800 text-white text-center')
 	const commonLetters = ref('cursor-pointer commonText')
 
 	const menuDiv = ref('rounded p-1 sm:p-2 text-xs sm:text-sm ft1 cell')
